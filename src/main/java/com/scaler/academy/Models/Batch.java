@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Batch {
 
-    int id ;
+
 
     String batchname ;
 

@@ -1,24 +1,34 @@
 package com.scaler.academy.Entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentEntity {
 
 
-    @GeneratedValue
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Id
     int id ;
+    @JsonProperty("name")
     String name ;
+
+
+
+    @JsonProperty("leaderboardposition")
     int leaderboardposition ;
+    public StudentEntity(String name){
+        this.name  = name ;
+    }
 
 
-    @ManyToOne
-    BatchEntity batch ;
+
+
 
 }

@@ -10,12 +10,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Student {
 
-    int id ;
+
     String name ;
 
-    Batch batch ;
+
 
 
     int leaderboardposition ;

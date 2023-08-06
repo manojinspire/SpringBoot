@@ -2,23 +2,25 @@ package com.scaler.academy.Entities;
 
 
 import com.scaler.academy.Models.Student;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class BatchEntity {
 
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     int id ;
 
@@ -26,9 +28,13 @@ public class BatchEntity {
 
 
     int totalStudents ;
+    public BatchEntity(String batchname){
+        this.batchname = batchname ;
+    }
 
-    @OneToMany
-    List<StudentEntity> students;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "batch_id" , referencedColumnName = "id")
+    List<StudentEntity> students = new ArrayList<>();
 
 
 

@@ -23,12 +23,13 @@ public class version1 {
     BatchService BatchService ;
 
     @PostMapping("/Student")
-    public void addStudent(Student std){
+    public void addStudent(@RequestBody Student std){
+        System.out.println("controller" + std.getName());
         StudentService.addStudent(std) ;
     }
 
     @PostMapping("/batch")
-    public void addBatch(Batch batch){
+    public void addBatch(@RequestBody  Batch batch){
         BatchService.addBatch(batch) ;
     }
 
@@ -44,15 +45,16 @@ public class version1 {
         BatchService.updateBatch(batch) ;
     }
 
-    @GetMapping("/Student")
-    public void getStudent(int id){
-        StudentService.getStudent(id) ;
+    @GetMapping("/Student/{id}")
+
+    public Student getStudent(   @PathVariable  int id){
+        return StudentService.getStudent(id) ;
     }
 
 
-    @GetMapping("/batch")
-    public void getBatch(int id){
-        BatchService.getBatch(id) ;
+    @GetMapping("/batch/{id}")
+    public Student getBatch(@PathVariable  int id){
+        return BatchService.getBatch(id) ;
     }
 
     @DeleteMapping("/Student")
